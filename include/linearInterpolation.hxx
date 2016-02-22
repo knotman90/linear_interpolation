@@ -3,7 +3,7 @@
 
 #include<assert.h>
 #include<stdio.h>
-#include<cmath>
+
 
 
 namespace FL{
@@ -76,9 +76,15 @@ public:
 -------------------------------------------------*/
 
       point<2,T>& Bilinear ( point<2,T>& p , const  point<2,T>*v  ){
+          for (int i = 0; i < 4; ++i) {
+                 //printf("val %f ",v[i].val);
+          }
+           //printf("\n");
         T x_d = (p.coord(0)-v[0].coord(0)) * (1/(v[1].coord(0) - v[0].coord(0)));
         T y_d = (p.coord(1)-v[0].coord(1)) * (1/(v[2].coord(1) - v[0].coord(1)));
+    //printf("x_d %f y_d %f \n",x_d,y_d);
         p.val = Bilinear(v[0].val,v[1].val,v[2].val,v[3].val,x_d,y_d);
+    //printf("final %f\n" ,p.val);
         return p;
     }
 
@@ -131,6 +137,8 @@ private:
     inline T Bilinear(const T f00,const   T f10,const T f01, const T f11, const T xd, const T yd){
         const T c0 = f00*(static_cast<T>(1.0)-xd) + f10*xd;
         const T c1 = f01*(static_cast<T>(1.0)-xd) + f11*xd;
+        //printf("%f %f %f %f \n",f00,f10,f01,f11);
+        //printf("c0 %f c1 %f \n",c0,c1);
         return Linear(c0,c1,yd);
     }
 
