@@ -14,7 +14,6 @@ int powi(int v, int exp){
         val=val*v;
     }
     return val;
-
 }
 
 template <class T>
