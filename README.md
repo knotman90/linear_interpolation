@@ -4,7 +4,7 @@ To compile/run the tests:
 
 1. `mkdir -p build  && cd build`
 2. `cmake .. && make`
-3. `../bin/tests`
+3. `./tests/bin/tests`
 
 Two versions, non of them perform sanity check on input. Bad input results in undefined behaviour: 
 include/linear_interpolation.cxx implements interpolation on cuboid 1/2/3D 
